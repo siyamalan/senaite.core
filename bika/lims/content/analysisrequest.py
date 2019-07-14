@@ -723,15 +723,38 @@ schema = BikaSchema.copy() + Schema((
             size=20,
             render_own_label=True,
             visible={
-                "add": "invisible",
+                "add": "edit",
                 'secondary': 'disabled',
             },
             catalog_name='bika_setup_catalog',
             base_query={"is_active": True,
                         "sort_on": "sortable_title",
                         "sort_order": "ascending"},
+            colModel=[
+                {'columnName': 'contextual_title',
+                 'width': '30',
+                 'label': _('Title'),
+                 'align': 'left'},
+                {'columnName': 'SampleTypeTitle',
+                 'width': '70',
+                 'label': _('SampleType'),
+                 'align': 'left'},
+                # UID is required in colModel
+                {'columnName': 'UID', 'hidden': True},
+            ],
+            ui_item="contextual_title",
             showOn=True,
         ),
+    ),
+
+    # see setResultsRange below.
+    RecordsField(
+        'ResultsRange',
+        required=0,
+        type='resultsrange',
+        subfields=('keyword', 'min', 'max', 'warn_min', 'warn_max', 'hidemin',
+                   'hidemax', 'rangecomment', 'min_operator', 'max_operator'),
+        widget=ComputedWidget(visible=False),
     ),
 
     # Sample field
@@ -1908,7 +1931,7 @@ class AnalysisRequest(BaseFolder):
         :rtype: dict
         """
         specs_range = []
-        specification = self.getSpecification()
+        specification = self.getPublicationSpecification()
         if specification:
             specs_range = specification.getResultsRange()
             specs_range = specs_range and specs_range or []
