@@ -12,7 +12,7 @@
         <span tal:replace="structure view/title"/>
       </h1>
 
-      <div class="worksheet_add_controls" tal:condition="python:view.is_manage_allowed()">
+      <div class="worksheet_add_controls" style="padding-bottom: 5px;"  tal:condition="python:view.is_manage_allowed()">
         <form class="form form-inline"
               name="worksheet-add-form"
               action="worksheet_add"
