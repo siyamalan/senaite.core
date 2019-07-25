@@ -476,6 +476,7 @@ class AnalysesView(BaseView):
             sample_type_url = api.get_url(sample_type)
             sample_type_img = "sampletype.png"
             sample_type_img_text = t(_("Sample Type"))
+          
         elif IReferenceAnalysis.providedBy(obj):
             # item
             sample = obj.getSample()
@@ -507,6 +508,7 @@ class AnalysesView(BaseView):
             # additional item icons
             additional_item_icons.append(
                 self.render_remarks_tag(request))
+             
             # parent
             client = obj.getClient()
             parent_obj = client
@@ -515,11 +517,13 @@ class AnalysesView(BaseView):
             parent_img = "client.png"
             parent_img_text = t(_("Client"))
             # sample type
+            client_ref = request.getClientReference()
+            client_sid = request.getClientSampleID()
+            tokens = filter(None, [client_ref, client_sid])
+            sample_type_title = ' / '.join(tokens)
             sample_type = obj.getSampleType()
-            sample_type_title = obj.getSampleTypeTitle()
-            sample_type_url = api.get_url(sample_type)
             sample_type_img = "sampletype.png"
-            sample_type_img_text = t(_("Sample Type"))
+            sample_type_img_text = t(_("Tank / Blend ID"))
 
         return {
             # item
