@@ -144,7 +144,7 @@ class AnalysisRequestsView(BikaListingView):
                 "replace_url": "getClientURL",
                 "toggle": True}),
             ("ClientID", {
-                "title": _("Client ID"),
+                "title": _("Plant ID"),
                 "index": "getClientID",
                 "attr": "getClientID",
                 "replace_url": "getClientURL",
@@ -162,12 +162,12 @@ class AnalysisRequestsView(BikaListingView):
                 "attr": "getDistrict",
                 "toggle": False}),
             ("getClientReference", {
-                "title": _("Client Ref"),
+                "title": _("VesselTank"),
                 "sortable": True,
                 "index": "getClientReference",
                 "toggle": False}),
             ("getClientSampleID", {
-                "title": _("Client SID"),
+                "title": _("Blend Code"),
                 "toggle": False}),
             ("ClientContact", {
                 "title": _("Contact"),
