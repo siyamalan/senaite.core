@@ -281,7 +281,7 @@ schema = BikaSchema.copy() + Schema((
                         'sort_order': 'descending'},
             colModel=[
                 {'columnName': 'getId', 'width': '20',
-                 'label': _('Sample ID'), 'align': 'left'},
+                 'label': _('Blend Code'), 'align': 'left'},
                 {'columnName': 'getClientSampleID', 'width': '20',
                  'label': _('Client SID'), 'align': 'left'},
                 {'columnName': 'getSampleTypeTitle', 'width': '30',
@@ -717,9 +717,9 @@ schema = BikaSchema.copy() + Schema((
         read_permission=View,
         write_permission=FieldEditPublicationSpecifications,
         widget=ReferenceWidget(
-            label=_("Publication Specification"),
+            label=_("Wine Specification"),
             description=_(
-                "Set the specification to be used before publishing a Sample."),
+                "Assign required specification for the analysis request."),
             size=20,
             render_own_label=True,
             visible={
@@ -827,8 +827,8 @@ schema = BikaSchema.copy() + Schema((
         read_permission=View,
         write_permission=FieldEditClientReference,
         widget=StringWidget(
-            label=_("Client Reference"),
-            description=_("The client side reference for this request"),
+            label=_("VesselTank"),
+            description=_("Tank Number"),
             render_own_label=True,
             visible={
                 'add': 'edit',
@@ -843,8 +843,8 @@ schema = BikaSchema.copy() + Schema((
         read_permission=View,
         write_permission=FieldEditClientSampleID,
         widget=StringWidget(
-            label=_("Client Sample ID"),
-            description=_("The client side identifier of the sample"),
+            label=_("Blend Code"),
+            description=_("Wine Blend ID"),
             size=20,
             render_own_label=True,
             visible={
